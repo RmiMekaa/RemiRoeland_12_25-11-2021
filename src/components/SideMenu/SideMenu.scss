@@ -1,0 +1,68 @@
+.sideMenu {
+  float: left;
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  width: 7.3125rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & nav {
+    position: relative;
+    bottom: 91px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+  & img {
+    width: 4rem;
+    height: 4rem;
+  }
+  &__link {
+    display: flex;
+    height: 4rem;
+    width: 4rem;
+    background-color: white;
+    border-radius: .375rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      background-color: #FF0101;
+    }
+  }
+  &__copyright {
+    position: absolute;
+    bottom: 60px;
+    color: white;
+    font-size: .75rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
+
+.sideMenu__link:first-child {
+  background-image: url('../../assets/Yoga.png');
+  &:hover {
+    background-image: url('../../assets/Yoga-white.png');
+  }
+}
+.sideMenu__link:nth-child(2) {
+  background-image: url('../../assets/Swim.png');
+  &:hover {
+    background-image: url('../../assets/Swim-white.png');
+  }
+}
+.sideMenu__link:nth-child(3) {
+  background-image: url('../../assets/Bike.png');
+  &:hover {
+    background-image: url('../../assets/Bike-white.png');
+  }
+}
+.sideMenu__link:nth-child(4) {
+  background-image: url('../../assets/Dumbbell.png');
+  &:hover {
+    background-image: url('../../assets/Dumbbell-white.png');
+  }
+}

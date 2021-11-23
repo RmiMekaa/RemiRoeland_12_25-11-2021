@@ -1,0 +1,12 @@
+.profile {
+  margin-left: 7.3125rem; //Side Menu size
+  padding: 3.75rem 6.25rem;
+  display: grid;
+  grid-template-areas: 
+    "titre titre titre titre"
+    "a a a e"
+    "b c d e";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 320px 263px;
+  gap: 1.875rem;
+}

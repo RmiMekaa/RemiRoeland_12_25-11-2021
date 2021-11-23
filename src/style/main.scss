@@ -1,0 +1,22 @@
+@import '../components/Header/Header.scss';
+@import '../components/SideMenu/SideMenu.scss';
+@import '../components/Welcome/Welcome.scss';
+@import '../pages/Profile/Profile.scss';
+@import '../components/DailyActivity/DailyActivity.scss';
+@import '../components/AverageDuration/AverageDuration.scss';
+@import '../components/UserRadar/UserRadar.scss';
+@import '../components/Score/Score.scss';
+@import '../components/Nutrients/Nutrients.scss';
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'roboto';
+}
