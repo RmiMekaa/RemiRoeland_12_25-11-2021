@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { getUserMainData } from '../../data/dataManager';
+import { getUserMainData, getUserActivity, getUserAverageSessions, getUserPerformances } from '../../data/dataManager';
 
 import Welcome from '../../components/Welcome/Welcome';
 import DailyActivity from '../../components/DailyActivity/DailyActivity';
-import AverageDuration from '../../components/AverageDuration/AverageDuration';
+import AverageSessions from '../../components/AverageSessions/AverageSessions';
 import UserRadar from '../../components/UserRadar/UserRadar';
 import Score from '../../components/Score/Score';
 import Nutrients from '../../components/Nutrients/Nutrients';
@@ -12,16 +12,23 @@ import Nutrients from '../../components/Nutrients/Nutrients';
 function Profile() {
   const { id } = useParams();
   const userId = parseInt(id);
-  const userData = getUserMainData(userId);
+
+  const userMainData = getUserMainData(userId)
+  const userInfos = userMainData.userInfos;
+  const userKeyData = userMainData.keyData;
+
+  const userActivity = getUserActivity(userId)
+  const userAverageSessions = getUserAverageSessions(userId)
+  const userPerformances = getUserPerformances(userId)
 
   return (
     <main className='profile'>
-      <Welcome name={userData.userInfos.firstName} />
-      <DailyActivity />
-      <AverageDuration id={userId} />
-      <UserRadar id={userId} />
-      <Score />
-      <Nutrients />
+      <Welcome name={userInfos.firstName} />
+      <DailyActivity data={userActivity} />
+      <AverageSessions data={userAverageSessions} />
+      <UserRadar data={userPerformances} />
+      {/* <Score data={userMainData.score} /> */}
+      <Nutrients data={userKeyData} />
     </main>
   );
 }
