@@ -1,0 +1,27 @@
+.nutrientsCard {
+  display: flex;
+  background-color: #FBFBFB;
+  border-radius: .3125rem;
+  padding: 2rem;
+  height: 7.75rem;
+  gap: 1.5rem;
+  align-items: center;
+  &__icon {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    &__count {
+      font-weight: 700;
+      font-size: 20px;
+    }
+    &__type {
+      font-weight: 500;
+      font-size: 14px;
+      color: #74798C;
+    }
+  }
+
+}

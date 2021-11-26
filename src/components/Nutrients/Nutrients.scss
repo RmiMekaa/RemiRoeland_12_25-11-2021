@@ -1,5 +1,7 @@
 .nutrients {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   grid-area: e;
-  background-color: teal;
   border-radius: 5px;
 }
