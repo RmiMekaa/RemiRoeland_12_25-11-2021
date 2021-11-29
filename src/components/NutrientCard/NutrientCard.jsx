@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import caloriesIcon from '../../assets/calories-icon.png';
-import carbsIcon from '../../assets/carbs-icon.png';
-import lipidIcon from '../../assets/lipid-icon.png';
-import proteinIcon from '../../assets/protein-icon.png';
+import caloriesIcon from './icons/calories-icon.png';
+import carbsIcon from './icons/carbs-icon.png';
+import lipidIcon from './icons/lipid-icon.png';
+import proteinIcon from './icons/protein-icon.png';
 
 function NutrientsCard(props) {
   let icon, unity;
