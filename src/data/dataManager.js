@@ -51,11 +51,25 @@ function getUserPerformances(id) {
     let item = {};
     const type = data.kind;
     item.value = data.value;
-    item.kind = userData.kind[type]
+    item.kind = translateKind(userData.kind[type])
     performances.push(item)
   })
 
   return performances;
+}
+/**
+ * Translate kind to fr
+ * @param {String} string English kind
+ * @return  {String}  FR kind
+ */
+function translateKind(string) {
+  switch (string) {
+    case 'energy': return "energie";
+    case 'strength': return "Force";
+    case 'speed': return "Vitesse";
+    case 'intensity': return "Intensité";
+    default: return string;
+  }
 }
 
 /**
