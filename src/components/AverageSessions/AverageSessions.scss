@@ -1,5 +1,25 @@
 .averageSessions {
+  position: relative;
   grid-area: b;
   background-color: #FF0000;
   border-radius: 5px;
+  &__heading {
+    max-width: 147px;
+    position: absolute;
+    top: 29px;
+    left: 34px;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.tooltip {
+  background-color: white;
+  padding: 2px 0.5rem;
+  &__text {
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
 }
