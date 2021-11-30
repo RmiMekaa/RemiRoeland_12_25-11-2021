@@ -4,7 +4,7 @@ import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Toolti
 
 /**
  * React Component for daily Activity
- * @param {Array.<Object>} props data
+ * @param {Array.<{day: Date, kilogram: Number, calories: Number, index: Number}>} props user data for daily Activity
  * @returns {ReactElement}
  */
 function DailyActivity(props) {
