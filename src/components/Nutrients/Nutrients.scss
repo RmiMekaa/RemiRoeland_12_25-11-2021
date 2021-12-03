@@ -5,3 +5,10 @@
   grid-area: e;
   border-radius: 5px;
 }
+
+@media all and (max-width: 1439px) {
+  .nutrients {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

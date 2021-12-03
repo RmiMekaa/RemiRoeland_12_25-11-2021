@@ -4,6 +4,7 @@
   border-radius: .3125rem;
   padding: 2rem;
   height: 7.75rem;
+  width: 100%;
   gap: 1.5rem;
   align-items: center;
   &__icon {
@@ -23,5 +24,11 @@
       color: #74798C;
     }
   }
+}
 
+@media all and (max-width: 1439px) {
+  .nutrientsCard {
+    padding: 1rem;
+    height: auto;
+  }
 }
