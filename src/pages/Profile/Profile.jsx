@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { getUserMainData, getUserActivity, getUserAverageSessions, getUserPerformances } from '../../data/dataManager';
+import { getUserMainData, getUserActivity, getUserAverageSessions, getUserPerformances, getUserScore } from '../../data/dataManager';
 
 import Welcome from '../../components/Welcome/Welcome';
 import DailyActivity from '../../components/DailyActivity/DailyActivity';
@@ -16,10 +16,10 @@ function Profile() {
   const userMainData = getUserMainData(userId)
   const userInfos = userMainData.userInfos;
   const userKeyData = userMainData.keyData;
-
-  const userActivity = getUserActivity(userId)
-  const userAverageSessions = getUserAverageSessions(userId)
-  const userPerformances = getUserPerformances(userId)
+  const userActivity = getUserActivity(userId);
+  const userAverageSessions = getUserAverageSessions(userId);
+  const userPerformances = getUserPerformances(userId);
+  const userScore = getUserScore(userId);
 
   return (
     <main className='profile'>
@@ -27,7 +27,7 @@ function Profile() {
       <DailyActivity data={userActivity} />
       <AverageSessions data={userAverageSessions} />
       <UserRadar data={userPerformances} />
-      {/* <Score data={userMainData.score} /> */}
+      <Score data={userScore} />
       <Nutrients data={userKeyData} />
     </main>
   );

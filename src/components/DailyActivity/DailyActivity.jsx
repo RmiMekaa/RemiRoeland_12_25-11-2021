@@ -1,19 +1,18 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
 
 /**
  * React Component for daily Activity
- * @param {Array.<{day: Date, kilogram: Number, calories: Number, index: Number}>} props user data for daily Activity
- * @returns {ReactElement}
+ * @param {Object} props user data for daily Activity
+ * @returns {import('react').ReactElement}
  */
 function DailyActivity(props) {
-  console.log(props);
   return (
     <div className='dailyActivity'>
       <TopSection />
       <ResponsiveContainer width='100%' height='70%'>
-        <BarChart barGap={7} margin={{ bottom: 20, top: 20, left: 20, right: 0 }} data={props.data} >
+        <BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={props.data} >
           <CartesianGrid strokeDasharray="2 3" vertical={false} />
           <Tooltip itemStyle={{ color: 'white' }} contentStyle={{ border: 'none', color: 'white', background: '#E60000' }} content={< CustomToolTipContent />} />
           <XAxis tickSize={0} dataKey={"index"} tickMargin={16} />
@@ -28,7 +27,7 @@ function DailyActivity(props) {
 
 /**
  * React Element including barchart's name and legend
- * @returns {ReactElement}
+ * @returns {import('react').ReactElement}
  */
 const TopSection = () => {
   return (
@@ -49,7 +48,6 @@ const TopSection = () => {
  * @returns {ReactElement|null}
  */
 const CustomToolTipContent = ({ payload, active }) => {
-  console.log(payload);
   if (active) {
     return (
       <div className="barChartTooltip">

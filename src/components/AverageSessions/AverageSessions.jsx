@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types';
 
 
 /**
- * @param {Array.<{day: Number, sessionLength: number}>} props user data for average sessions
+ * @param {Object} props user data for average sessions
  * @returns 
  */
 function AverageSessions(props) {
@@ -52,7 +52,7 @@ const CustomToolTipContent = ({ payload, active }) => {
 /**
  * Custom cursor
  * @param {array} points coordinates 
- * @returns {ReactElement}
+ * @returns {import('react').ReactElement}
  */
 const CustomCursor = ({ points }) => {
   return (

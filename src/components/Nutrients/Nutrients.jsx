@@ -15,7 +15,7 @@ function Nutrients(props) {
 }
 
 Nutrients.propTypes = {
-  id: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Nutrients;
