@@ -1,24 +1,50 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
+import { getUserActivity } from '../../data/dataManager';
+import { useParams } from 'react-router';
 
 /**
  * React Component for daily Activity
  * @param {Object} props user data for daily Activity
  * @returns {import('react').ReactElement}
  */
-function DailyActivity(props) {
+function DailyActivity() {
+  const { id } = useParams();
+  const [userActivity, setUserActivity] = useState(null);
+  const [isLoading, setLoadingStatus] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    getUserActivity(id)
+      .then(res => {
+        setUserActivity(res)
+        setLoadingStatus(false)
+      })
+      .catch(err => {
+        setError(true)
+        setLoadingStatus(false)
+      })
+  }, [id])
+
+  if (isLoading) {
+    return <div>Loading</div>
+  }
+  if (error) {
+    return <div>Erreur</div>
+  }
+
   return (
     <div className='dailyActivity'>
       <TopSection />
       <ResponsiveContainer width='100%' height='70%'>
-        <BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={props.data} >
+        <BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={userActivity} >
           <CartesianGrid strokeDasharray="2 3" vertical={false} />
           <Tooltip itemStyle={{ color: 'white' }} contentStyle={{ border: 'none', color: 'white', background: '#E60000' }} content={< CustomToolTipContent />} />
           <XAxis tickSize={0} dataKey={"index"} tickMargin={16} />
-          <YAxis dataKey="kilogram" tickSize={0} orientation="right" domain={['dataMin - 1', 'dataMax']} interval={0} axisLine={false} allowDecimals={false} />
-          <Bar dataKey="kilogram" barSize={7} radius={[10, 10, 0, 0]} fill="#282D30" />
-          <Bar dataKey="calories" barSize={7} radius={[10, 10, 0, 0]} fill="#E60000" />
+          <YAxis dataKey="kilogram" yAxisId="kilogram" tickSize={0} orientation="right" domain={['dataMin - 1', 'dataMax + 1']} interval={0} axisLine={false} allowDecimals={false} />
+          <YAxis dataKey="calories" yAxisId="calories" domain={[0, 'dataMax + 50']} hide={true} />
+          <Bar dataKey="kilogram" yAxisId="kilogram" barSize={7} radius={[10, 10, 0, 0]} fill="#282D30" />
+          <Bar dataKey="calories" yAxisId="calories" barSize={7} radius={[10, 10, 0, 0]} fill="#E60000" />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -58,9 +84,5 @@ const CustomToolTipContent = ({ payload, active }) => {
   }
   return null
 }
-
-DailyActivity.propTypes = {
-  data: PropTypes.array.isRequired,
-};
 
 export default DailyActivity;
