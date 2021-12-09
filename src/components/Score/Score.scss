@@ -6,6 +6,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  &__heading {
+    position: absolute;
+    font-size: 15px;
+    top: 24px;
+    left: 30px;
+  }
   &__text {
     position: absolute;
     display: flex;
