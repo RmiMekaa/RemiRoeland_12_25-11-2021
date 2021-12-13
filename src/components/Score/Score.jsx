@@ -39,7 +39,7 @@ function Score(props) {
   return (
     <div className='score'>
       <h2 className='score__heading'>Score</h2>
-      <RadialBarChart width={200} height={200} innerRadius={80} outerRadius={80} barSize={10} data={userScore} startAngle={90} endAngle={-270}>
+      <RadialBarChart width={200} height={200} innerRadius={80} outerRadius={80} barSize={10} data={userScore} startAngle={-270} endAngle={90}>
         <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
         <RadialBar dataKey="value" cornerRadius={50} background={false} fill="#E60000" />
       </RadialBarChart>
