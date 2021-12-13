@@ -1,6 +1,13 @@
+/**
+ * @typedef {import('react').ReactElement}  ReactElement
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * React Component for side menu
+ * @returns { ReactElement }
+ */
 function SideMenu() {
   return (
     <div className="sideMenu">

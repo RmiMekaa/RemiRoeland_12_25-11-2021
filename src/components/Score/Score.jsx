@@ -6,6 +6,11 @@ import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts';
 import { getUserScore } from '../../data/GetUserScore';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
+/**
+ * React Component for user score (Chart: RadialBarChart)
+ * @param {Object} props 
+ * @returns { ReactElement }
+ */
 function Score(props) {
   const [userScore, setUserScore] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
@@ -44,6 +49,7 @@ function Score(props) {
 }
 
 /**
+ * Custom component to display user score
  * @param {Number} score User score
  * @return {ReactElement}
  */

@@ -1,3 +1,6 @@
+/**
+ * @typedef {import('react').ReactElement}  ReactElement
+ */
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
 import PropTypes from 'prop-types';
@@ -5,9 +8,9 @@ import { getUserDailyActivity } from '../../data/GetUserDailyActivity';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
- * React Component for daily Activity
- * @param {Object} props user data for daily Activity
- * @returns {import('react').ReactElement}
+ * React Component for User Daily Activity (Chart: BarChart)
+ * @param {Object} props 
+ * @returns { ReactElement }
  */
 function DailyActivity(props) {
   const [userActivity, setUserActivity] = useState(null);

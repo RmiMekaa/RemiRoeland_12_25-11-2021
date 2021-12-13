@@ -1,7 +1,15 @@
+/**
+ * @typedef {import('react').ReactElement}  ReactElement
+ */
 import React, { useEffect, useState } from 'react';
 import { getUserInfos } from '../../data/GetUserInfos';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
+/**
+ * React Component for welcome message
+ * @param {Object} props 
+ * @returns { ReactElement }
+ */
 function Welcome(props) {
   const [userInfos, setUserInfos] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);

@@ -7,6 +7,11 @@ import PropTypes from 'prop-types';
 import { getUserAverageSessions } from '../../data/GetUserAverageSessions';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
+/**
+ * React Component for User Average Sessions (Chart: LineChart)
+ * @param {Object} props 
+ * @returns { ReactElement }
+ */
 function AverageSessions(props) {
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
@@ -69,7 +74,7 @@ const CustomToolTipContent = ({ payload, active }) => {
 }
 /**
  * Custom cursor
- * @param   {array} points coordinates 
+ * @param   {array}   points  coordinates 
  * @returns {ReactElement}
  */
 const CustomCursor = ({ points }) => {
