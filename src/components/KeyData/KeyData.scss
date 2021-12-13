@@ -1,4 +1,4 @@
-.nutrients {
+.keyData {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,7 +7,7 @@
 }
 
 @media all and (max-width: 1439px) {
-  .nutrients {
+  .keyData {
     flex-direction: row;
     gap: 1rem;
   }

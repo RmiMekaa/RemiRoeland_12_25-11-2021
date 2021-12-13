@@ -23,3 +23,31 @@
     font-weight: 500;
   }
 }
+
+.componentState {
+  width: 100%;
+  height: 100%;
+  background-color: #282D30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  &__message {
+    text-align: center;
+    color: white;
+    max-width: 60%;
+  }
+}
+
+.loadingMsg, .errorMsg {
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #282D30;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+}
