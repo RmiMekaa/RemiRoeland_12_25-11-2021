@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { getUserInfos } from '../../data/dataManager';
+import { getUserInfos } from '../../data/GetUserInfos';
+import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
-function Welcome() {
-  const { id } = useParams();
-  const [userInfos, setUserInfos] = useState([]);
+function Welcome(props) {
+  const [userInfos, setUserInfos] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserInfos(id)
+    getUserInfos(props.id)
       .then(res => {
         setUserInfos(res)
         setLoadingStatus(false)
@@ -18,13 +17,14 @@ function Welcome() {
         setError(true)
         setLoadingStatus(false)
       })
-  }, [id])
+  }, [props.id])
 
-  if (isLoading) {
-    return <div>Loading</div>
-  }
-  if (error) {
-    return <div>Erreur</div>
+  if (isLoading || error) {
+    return (
+      <div className='welcome'>
+        {displayComponentStatus(isLoading, error, "Nom de l'utilisateur")}
+      </div>
+    )
   }
 
   return (

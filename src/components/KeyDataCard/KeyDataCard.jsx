@@ -5,7 +5,7 @@ import carbsIcon from './icons/carbs-icon.png';
 import lipidIcon from './icons/lipid-icon.png';
 import proteinIcon from './icons/protein-icon.png';
 
-function NutrientsCard(props) {
+function KeyDataCard(props) {
   let icon, unity;
   switch (props.type) {
     case 'Calories': icon = caloriesIcon; unity = 'Kcal'; break;
@@ -26,9 +26,9 @@ function NutrientsCard(props) {
   );
 }
 
-NutrientsCard.propTypes = {
+KeyDataCard.propTypes = {
   count: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
 };
 
-export default NutrientsCard;
+export default KeyDataCard;

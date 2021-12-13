@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { getUserPerformance } from '../../data/dataManager';
-import { useParams } from 'react-router';
+import { getUserPerformance } from '../../data/GetUserPerformance';
+import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
-function UserRadar() {
-
-  const { id } = useParams();
+function UserRadar(props) {
   const [userPerformance, setUserPerformance] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserPerformance(id)
+    getUserPerformance(props.id)
       .then(res => {
         setUserPerformance(res)
         setLoadingStatus(false)
@@ -20,13 +18,14 @@ function UserRadar() {
         setError(true)
         setLoadingStatus(false)
       })
-  }, [id])
+  }, [props.id])
 
-  if (isLoading) {
-    return <div>Loading</div>
-  }
-  if (error) {
-    return <div>Erreur</div>
+  if (isLoading || error) {
+    return (
+      <div className='radar'>
+        {displayComponentStatus(isLoading, error, "Performances")}
+      </div>
+    )
   }
 
   return (

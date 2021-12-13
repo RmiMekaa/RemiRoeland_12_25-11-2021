@@ -3,17 +3,16 @@
  */
 import React, { useEffect, useState } from 'react';
 import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts';
-import { useParams } from 'react-router';
-import { getUserScore } from '../../data/dataManager';
+import { getUserScore } from '../../data/GetUserScore';
+import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
-function Score() {
-  const { id } = useParams();
-  const [userScore, setUserScore] = useState({});
+function Score(props) {
+  const [userScore, setUserScore] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserScore(id)
+    getUserScore(props.id)
       .then(res => {
         setUserScore(res)
         setLoadingStatus(false)
@@ -22,13 +21,14 @@ function Score() {
         setError(true)
         setLoadingStatus(false)
       })
-  }, [id])
+  }, [props.id])
 
-  if (isLoading) {
-    return <div>Loading</div>
-  }
-  if (error) {
-    return <div>Erreur</div>
+  if (isLoading || error) {
+    return (
+      <div className='score'>
+        {displayComponentStatus(isLoading, error, "Score")}
+      </div>
+    )
   }
 
   return (

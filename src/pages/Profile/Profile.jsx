@@ -6,7 +6,7 @@ import DailyActivity from '../../components/DailyActivity/DailyActivity';
 import AverageSessions from '../../components/AverageSessions/AverageSessions';
 import UserRadar from '../../components/UserRadar/UserRadar';
 import Score from '../../components/Score/Score';
-import Nutrients from '../../components/Nutrients/Nutrients';
+import KeyData from '../../components/KeyData/KeyData';
 
 function Profile() {
   const { id } = useParams();
@@ -14,12 +14,12 @@ function Profile() {
 
   return (
     <main className='profile'>
-      <Welcome />
-      <Nutrients />
-      <DailyActivity />
-      <AverageSessions />
-      <UserRadar />
-      <Score />
+      <Welcome id={userId} />
+      <KeyData id={userId} />
+      <DailyActivity id={userId} />
+      <AverageSessions id={userId} />
+      <UserRadar id={userId} />
+      <Score id={userId} />
     </main>
   );
 }

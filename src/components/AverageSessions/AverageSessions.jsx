@@ -3,18 +3,17 @@
  */
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
-import { useParams } from 'react-router';
-import { getUserAverageSessions } from '../../data/dataManager';
+import PropTypes from 'prop-types';
+import { getUserAverageSessions } from '../../data/GetUserAverageSessions';
+import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
-
-function AverageSessions() {
-  const { id } = useParams();
+function AverageSessions(props) {
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserAverageSessions(id)
+    getUserAverageSessions(props.id)
       .then(res => {
         setUserAverageSessions(res)
         setLoadingStatus(false)
@@ -23,13 +22,14 @@ function AverageSessions() {
         setError(true)
         setLoadingStatus(false)
       })
-  }, [id])
+  }, [props.id])
 
-  if (isLoading) {
-    return <div>Loading</div>
-  }
-  if (error) {
-    return <div>Erreur</div>
+  if (isLoading || error) {
+    return (
+      <div className='averageSessions'>
+        {displayComponentStatus(isLoading, error, "Sessions")}
+      </div>
+    )
   }
 
   return (
@@ -83,5 +83,9 @@ const CustomCursor = ({ points }) => {
     ></rect>
   )
 }
+
+AverageSessions.propTypes = {
+  id: PropTypes.number.isRequired
+};
 
 export default AverageSessions;
