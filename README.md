@@ -31,3 +31,6 @@ Then,
 5. The `yarn dev` command will allow you to run the micro API.
 
 ### Documentation
+
+SportSee - made with JsDoc(https://jsdoc.app/)
+
