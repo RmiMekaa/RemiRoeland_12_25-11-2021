@@ -20,7 +20,7 @@
   },
   "opts": {
     "encoding": "utf8",
-    "destination": "./doc/",
+    "destination": "./docs/",
     "recurse": true,
     "readme": "README.md"
   }
