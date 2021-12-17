@@ -1,6 +1,3 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React from 'react';
 import PropTypes from 'prop-types';
 import caloriesIcon from './icons/calories-icon.png';
@@ -9,11 +6,14 @@ import lipidIcon from './icons/lipid-icon.png';
 import proteinIcon from './icons/protein-icon.png';
 
 /**
- * React Component for Key Data Card
+ * React component for Key Data Card
  * @param {Object} props 
- * @returns { ReactElement }
+ * @param {String} props.type key data type
+ * @param {Number} props.count amount
+ * @component
  */
 function KeyDataCard(props) {
+  console.log(props);
   let icon, unity;
   switch (props.type) {
     case 'Calories': icon = caloriesIcon; unity = 'Kcal'; break;

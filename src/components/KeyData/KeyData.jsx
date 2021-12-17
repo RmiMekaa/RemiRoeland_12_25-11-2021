@@ -1,6 +1,3 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import KeyDataCard from '../KeyDataCard/KeyDataCard';
@@ -8,11 +5,13 @@ import { getUserKeyData } from '../../data/GetUserKeyData';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
- * React Component for Key Data Section
- * @param {Object} props 
- * @returns { ReactElement }
+ * React component for Key Data Section
+ * @param {Object} props
+ * @param {Number} props.id
+ * @component
  */
 function KeyData(props) {
+  console.log(props);
   const [userKeyData, setUserKeyData] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);

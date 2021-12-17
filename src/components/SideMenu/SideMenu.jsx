@@ -1,12 +1,9 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * React Component for side menu
- * @returns { ReactElement }
+ * React component for side menu
+ * @component
  */
 function SideMenu() {
   return (
@@ -16,8 +13,10 @@ function SideMenu() {
         <Link to="/" className="sideMenu__link"></Link>
         <Link to="/" className="sideMenu__link"></Link>
         <Link to="/" className="sideMenu__link"></Link>
+        {/* For development only ↓ */}
         <Link to="/user/12" className="user_shortcut">12</Link>
         <Link to="/user/18" className="user_shortcut">18</Link>
+        {/* For development only ↑ */}
       </nav>
       <span className='sideMenu__copyright'>Copyright, SportSee 2020</span>
     </div>

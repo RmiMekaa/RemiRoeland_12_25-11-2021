@@ -1,14 +1,11 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import { getUserInfos } from '../../data/GetUserInfos';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
- * React Component for welcome message
- * @param {Object} props 
- * @returns { ReactElement }
+ * React component for welcome message
+ * @param {Object} props
+ * @param {Number} props.id User Id
+ * @component
  */
 function Welcome(props) {
   const [userInfos, setUserInfos] = useState(null);
@@ -30,7 +27,7 @@ function Welcome(props) {
   if (isLoading || error) {
     return (
       <div className='welcome'>
-        {displayComponentStatus(isLoading, error, "Nom de l'utilisateur")}
+        <h1>Bonjour !</h1>
       </div>
     )
   }

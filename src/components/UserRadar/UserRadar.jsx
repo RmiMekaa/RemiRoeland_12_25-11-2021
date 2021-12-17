@@ -1,15 +1,13 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { getUserPerformance } from '../../data/GetUserPerformance';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
- * React Component for user performance radar (Chart: Radar)
+ * React component for user performance radar (Chart: Radar)
  * @param {Object} props 
- * @returns { ReactElement }
+ * @param {Number} props.id User Id
+ * @component
  */
 function UserRadar(props) {
   const [userPerformance, setUserPerformance] = useState(null);

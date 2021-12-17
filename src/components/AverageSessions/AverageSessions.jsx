@@ -1,6 +1,3 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types';
@@ -10,9 +7,11 @@ import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 /**
  * React Component for User Average Sessions (Chart: LineChart)
  * @param {Object} props 
- * @returns { ReactElement }
+ * @param {Number} props.id  User Id
+ * @component
  */
 function AverageSessions(props) {
+  console.log(props);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
@@ -58,9 +57,9 @@ function AverageSessions(props) {
 
 /**
  * Custom tooltip content
- * @param {object}    payload   data
- * @param {boolean}   active    true if tooltip is displayed
- * @returns {ReactElement|null}
+ * @param {Object}    payload   data
+ * @param {Boolean}   active    true if tooltip is displayed
+ * @component
  */
 const CustomToolTipContent = ({ payload, active }) => {
   if (active) {
@@ -74,18 +73,12 @@ const CustomToolTipContent = ({ payload, active }) => {
 }
 /**
  * Custom cursor
- * @param   {array}   points  coordinates 
- * @returns {ReactElement}
+ * @param   {Object}  points  coordinates 
+ * @component
  */
 const CustomCursor = ({ points }) => {
   return (
-    <rect
-      x={points[0].x}
-      y="0"
-      height="100%"
-      width="100%"
-      fill="rgba(0, 0, 0, 0.1)"
-    ></rect>
+    <rect x={points[0].x} y="0" height="100%" width="100%" fill="rgba(0, 0, 0, 0.1)"></rect>
   )
 }
 

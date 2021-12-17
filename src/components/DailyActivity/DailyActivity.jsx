@@ -1,6 +1,3 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
 import PropTypes from 'prop-types';
@@ -9,8 +6,9 @@ import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
  * React Component for User Daily Activity (Chart: BarChart)
- * @param {Object} props 
- * @returns { ReactElement }
+ * @param {Object} props
+ * @param {Number} props.id
+ * @component
  */
 function DailyActivity(props) {
   const [userActivity, setUserActivity] = useState(null);
@@ -56,8 +54,8 @@ function DailyActivity(props) {
 }
 
 /**
- * React Element including barchart's name and legend
- * @returns {import('react').ReactElement}
+ * React component for barchart's name and legend
+ * @component
  */
 const TopSection = () => {
   return (
@@ -74,7 +72,7 @@ const TopSection = () => {
  * Custom tooltip content
  * @param {object}    payload   data
  * @param {boolean}   active    true if tooltip is displayed
- * @returns {ReactElement|null}
+ * @comopnent
  */
 const CustomToolTipContent = ({ payload, active }) => {
   if (active) {

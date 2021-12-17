@@ -1,13 +1,10 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 /**
- * React Component for Header
- * @returns { ReactElement }
+ * React Component for the header
+ * @component
  */
 function Header() {
   return (

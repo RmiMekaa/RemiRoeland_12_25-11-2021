@@ -1,15 +1,14 @@
-/**
- * @typedef {import('react').ReactElement}  ReactElement
- */
 import React, { useEffect, useState } from 'react';
 import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts';
+import PropTypes from 'prop-types';
 import { getUserScore } from '../../data/GetUserScore';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
  * React Component for user score (Chart: RadialBarChart)
  * @param {Object} props 
- * @returns { ReactElement }
+ * @param {Number} props.id
+ * @component
  */
 function Score(props) {
   const [userScore, setUserScore] = useState(null);
@@ -50,8 +49,8 @@ function Score(props) {
 
 /**
  * Custom component to display user score
- * @param {Number} score User score
- * @return {ReactElement}
+ * @param {Object} score User score
+ * @component
  */
 const CustomText = ({ score }) => {
   return (
@@ -61,5 +60,10 @@ const CustomText = ({ score }) => {
     </div >
   )
 }
+
+Score.propTypes = {
+  id: PropTypes.number.isRequired
+};
+
 
 export default Score;
