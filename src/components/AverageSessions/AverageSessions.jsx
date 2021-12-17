@@ -72,7 +72,7 @@ const CustomToolTipContent = ({ payload, active }) => {
   return null
 }
 /**
- * Custom cursor
+ * Custom cursor for line chart
  * @param   {Object}  points  coordinates 
  * @component
  */
