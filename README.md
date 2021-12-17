@@ -32,5 +32,5 @@ Then,
 
 ### Documentation
 
-SportSee - made with JsDoc(https://jsdoc.app/)
+[SportSee](https://rmimekaa.github.io/RemiRoeland_12_25-11-2021/index.html) - made with [JsDoc](https://jsdoc.app/)
 
