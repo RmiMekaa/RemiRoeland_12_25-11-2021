@@ -7,7 +7,7 @@
  * @return  {Promise.<Object>}  requested data promise
  */
 async function getDataFromAPI(id, type) {
-  let url = "http://localhost:3001/user/" + id;
+  let url = "http://localhost:3000/user/" + id;
   if (type !== "main") url += "/" + type;
   try {
     const res = await fetch(url)
