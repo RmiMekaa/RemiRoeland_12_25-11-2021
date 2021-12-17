@@ -22,11 +22,12 @@ Indicate amount of Calories, proteins, carbohydrate and lipids recommended for t
 
 ### Installation
 
-1. Go to https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard and follow the instructions. It will allows you to run the micro API for the sports analytics dashboard
-2. Fork this repository
-3. Clone it on your computer.
-4. Install the dependencies with the `yarn install` command.
-5. Launch the app with the `npm start`.
-6. The `yarn dev` command will allow you to run the micro API.
+1. First of all, go to [this repository](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the instructions.  
+It will allows you to run the micro API for the sports analytics dashboard.  
+Then,
+2. Clone this repository on your computer.
+3. Install the dependencies with the `yarn install` command.
+4. Launch the app with the `yarn start`.
+5. The `yarn dev` command will allow you to run the micro API.
 
-## Documentation
+### Documentation
