@@ -56,7 +56,7 @@ function AverageSessions(props) {
 }
 
 /**
- * Custom tooltip content
+ * Custom tooltip content for line chart
  * @param {Object}    payload   data
  * @param {Boolean}   active    true if tooltip is displayed
  * @component

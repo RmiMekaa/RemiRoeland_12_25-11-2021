@@ -69,7 +69,7 @@ const TopSection = () => {
   )
 }
 /**
- * Custom tooltip content
+ * Custom tooltip content for bar chart
  * @param {object}    payload   data
  * @param {boolean}   active    true if tooltip is displayed
  * @comopnent
