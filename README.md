@@ -1,3 +1,43 @@
+# SportSee - Analytics dashboard
+
+SportSee is an app which allows every sports enjoyer to easily follow his performances and activity.
+Here you will find the analytics dashboard page of the application, this page will display the following content:
+
+- Daily activity bar chart, giving informations about the user weigth and the amount of calories burned for the last ten days.
+- Average sessions line chart, giving informations about the sessions duration for the last seven days.
+- Performance radar chart, displaying strengths of the user and potential areas for improvement among intensity, speed, strength, stamina, energy and cardio.
+- Score radial chart, showing the actual progression of the set target.
+- Key datas card, indicate amount of Calories, proteins, carbohydrate and lipids recommended for the user program.
+
+### Prerequisites
+
+- [NodeJS (**version 12.18**)](https://nodejs.org/en/)
+- [React] (https://fr.reactjs.org/)
+- [Yarn](https://yarnpkg.com/)
+
+### Installation
+
+- Fork the repository
+- Clone it on your computer.
+- The `yarn install` command will allow you to install the dependencies.
+- The `yarn dev` command will allow you to run the micro API.
+
+## Documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
