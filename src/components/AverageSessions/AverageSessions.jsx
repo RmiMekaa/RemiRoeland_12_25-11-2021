@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types';
-import { getUserAverageSessions } from '../../data/GetUserAverageSessions';
+import { getData } from '../../data/dataManager';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
@@ -11,18 +11,18 @@ import { displayComponentStatus } from "../../services/DisplayComponentStatus";
  * @component
  */
 function AverageSessions(props) {
-  console.log(props);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserAverageSessions(props.id)
+    getData(props.id, "averageSessions")
       .then(res => {
         setUserAverageSessions(res)
         setLoadingStatus(false)
       })
       .catch(err => {
+        console.error(err);
         setError(true)
         setLoadingStatus(false)
       })

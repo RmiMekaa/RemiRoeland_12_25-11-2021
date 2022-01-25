@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import KeyDataCard from '../KeyDataCard/KeyDataCard';
-import { getUserKeyData } from '../../data/GetUserKeyData';
+import { getData } from '../../data/dataManager';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
@@ -11,13 +11,12 @@ import { displayComponentStatus } from "../../services/DisplayComponentStatus";
  * @component
  */
 function KeyData(props) {
-  console.log(props);
   const [userKeyData, setUserKeyData] = useState(null);
   const [isLoading, setLoadingStatus] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserKeyData(props.id)
+    getData(props.id, "keyData")
       .then(res => {
         setUserKeyData(res)
         setLoadingStatus(false)

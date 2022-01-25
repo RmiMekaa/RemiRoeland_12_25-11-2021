@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { getUserPerformance } from '../../data/GetUserPerformance';
+import { getData } from '../../data/dataManager';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
@@ -15,7 +15,7 @@ function UserRadar(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserPerformance(props.id)
+    getData(props.id, "performance")
       .then(res => {
         setUserPerformance(res)
         setLoadingStatus(false)

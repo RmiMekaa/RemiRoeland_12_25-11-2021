@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
 import PropTypes from 'prop-types';
-import { getUserDailyActivity } from '../../data/GetUserDailyActivity';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+import { getData } from '../../data/dataManager';
 
 /**
  * React Component for User Daily Activity (Chart: BarChart)
@@ -16,7 +16,7 @@ function DailyActivity(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserDailyActivity(props.id)
+    getData(props.id, "activity")
       .then(res => {
         setUserActivity(res)
         setLoadingStatus(false)

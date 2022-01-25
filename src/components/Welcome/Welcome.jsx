@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserInfos } from '../../data/GetUserInfos';
+import { getData } from '../../data/dataManager';
 
 /**
  * React component for welcome message
@@ -13,7 +13,7 @@ function Welcome(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserInfos(props.id)
+    getData(props.id, "userInfos")
       .then(res => {
         setUserInfos(res)
         setLoadingStatus(false)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RadialBarChart, PolarAngleAxis, RadialBar } from 'recharts';
 import PropTypes from 'prop-types';
-import { getUserScore } from '../../data/GetUserScore';
+import { getData } from '../../data/dataManager';
 import { displayComponentStatus } from "../../services/DisplayComponentStatus";
 
 /**
@@ -16,12 +16,13 @@ function Score(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getUserScore(props.id)
+    getData(props.id, "score")
       .then(res => {
         setUserScore(res)
         setLoadingStatus(false)
       })
       .catch(err => {
+        console.error(err)
         setError(true)
         setLoadingStatus(false)
       })

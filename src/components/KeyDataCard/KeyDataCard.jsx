@@ -13,7 +13,6 @@ import proteinIcon from './icons/protein-icon.png';
  * @component
  */
 function KeyDataCard(props) {
-  console.log(props);
   let icon, unity;
   switch (props.type) {
     case 'Calories': icon = caloriesIcon; unity = 'Kcal'; break;
