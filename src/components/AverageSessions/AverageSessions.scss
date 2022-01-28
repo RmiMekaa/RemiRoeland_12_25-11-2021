@@ -10,7 +10,7 @@
     left: 34px;
     font-size: 15px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
   }
 }
 
@@ -22,6 +22,10 @@
     font-size: 0.8rem;
     font-weight: 500;
   }
+}
+
+.averageSessions__line {
+  z-index: 10000;
 }
 
 .componentState {
@@ -37,17 +41,4 @@
     color: white;
     max-width: 60%;
   }
-}
-
-.loadingMsg, .errorMsg {
-  display: flex;
-  padding: 2rem;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background-color: #282D30;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  color: white;
 }
