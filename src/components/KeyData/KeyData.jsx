@@ -1,52 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import KeyDataCard from '../KeyDataCard/KeyDataCard';
-import { getData } from '../../data/dataManager';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
+import { useFetch } from '../../hooks/useFetch';
+import { useParams } from 'react-router';
 
 /**
  * React component for Key Data Section
- * @param {Object} props
- * @param {Number} props.id
  * @component
  */
-function KeyData(props) {
-  const [userKeyData, setUserKeyData] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function KeyData() {
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "keyData");
 
-  useEffect(() => {
-    getData(props.id, "keyData")
-      .then(res => {
-        setUserKeyData(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
-
-  if (isLoading || error) {
-    return (
-      <div className='keyData'>
-        {displayComponentStatus(isLoading, error, "Chiffres clés")}
-      </div>
-    )
-  }
+  if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='keyData' />
 
   return (
-    <div className='keyData'>
-      <KeyDataCard type="Calories" count={userKeyData.calorieCount} />
-      <KeyDataCard type="Proteines" count={userKeyData.proteinCount} />
-      <KeyDataCard type="Glucides" count={userKeyData.carbohydrateCount} />
-      <KeyDataCard type="Lipides" count={userKeyData.lipidCount} />
-    </div>
-  );
+    <section className='keyData'>
+      <h2 className='sr-only'>keyData</h2>
+      <KeyDataCard type="Calories" count={data.calorieCount} />
+      <KeyDataCard type="Proteines" count={data.proteinCount} />
+      <KeyDataCard type="Glucides" count={data.carbohydrateCount} />
+      <KeyDataCard type="Lipides" count={data.lipidCount} />
+    </section>
+  )
 }
-
-KeyData.propTypes = {
-  id: PropTypes.number.isRequired
-};
-
-export default KeyData;

@@ -1,57 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
-import PropTypes from 'prop-types';
-import { getData } from '../../data/dataManager';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
+import { useFetch } from '../../hooks/useFetch';
+// import PropTypes from 'prop-types';
+// import { getData } from '../../data/dataManager';
+// import { useEffect, useState } from 'react';
+
 
 /**
  * React Component for User Average Sessions (Chart: LineChart)
  * @param {Object} props 
- * @param {Number} props.id  User Id
  * @component
  */
-function AverageSessions(props) {
-  const [userAverageSessions, setUserAverageSessions] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function AverageSessions(props) {
+  const { loading, error, data } = useFetch(props.id, "averageSessions");
 
-  useEffect(() => {
-    getData(props.id, "averageSessions")
-      .then(res => {
-        setUserAverageSessions(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        console.error(err);
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
+  //const [userAverageSessions, setUserAverageSessions] = useState(null);
+  //const [isLoading, setLoadingStatus] = useState(true);
+  //const [error, setError] = useState(false);
 
-  if (isLoading || error) {
-    return (
-      <div className='averageSessions'>
-        {displayComponentStatus(isLoading, error, "Sessions")}
-      </div>
-    )
-  }
+  // useEffect(() => {
+  //   getData(props.id, "averageSessions")
+  //     .then(res => {
+  //       setUserAverageSessions(res)
+  //       setLoadingStatus(false)
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //       setError(true)
+  //       setLoadingStatus(false)
+  //     })
+  // }, [props.id])
+
+  if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='averageSessions' />
 
   return (
-    <div className='averageSessions'>
+    <section className='averageSessions'>
       <h2 className='averageSessions__heading'>Durée moyenne des sessions</h2>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={userAverageSessions} margin={{ top: 70, bottom: 10, left: 20, right: 20 }}>
+        <LineChart data={data} margin={{ top: 70, bottom: 10, left: 20, right: 20 }}>
           <Tooltip
             content={<CustomToolTipContent />}
             cursor={<CustomCursor />}
             contentStyle={{ border: 'none', background: 'white', }}
-            itemStyle={{ color: 'blue' }}
           />
           <XAxis dataKey="day" axisLine={false} tickLine={false} stroke="white" tickMargin={10} tick={{ fontSize: 12, opacity: 0.7 }} />
-          <Line dot={false} legendType="none" type="monotone" dataKey="sessionLength" stroke="white" strokeWidth="1.5" />
+          <Line className='averageSessions__line' dot={false} legendType="none" type="monotone" dataKey="sessionLength" stroke="white" strokeOpacity={0.8} strokeWidth="1.8" />
         </LineChart>
       </ResponsiveContainer>
-    </div >
+    </section >
   );
 }
 
@@ -82,8 +79,6 @@ const CustomCursor = ({ points }) => {
   )
 }
 
-AverageSessions.propTypes = {
-  id: PropTypes.number.isRequired
-};
-
-export default AverageSessions;
+// AverageSessions.propTypes = {
+//   id: PropTypes.number.isRequired,
+// };

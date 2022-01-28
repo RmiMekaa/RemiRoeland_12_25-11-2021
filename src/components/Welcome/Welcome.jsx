@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { getData } from '../../data/dataManager';
+import React from 'react';
+import { useParams } from 'react-router';
+import { useFetch } from '../../hooks/useFetch';
 
 /**
  * React component for welcome message
- * @param {Object} props
- * @param {Number} props.id User Id
  * @component
  */
-function Welcome(props) {
-  const [userInfos, setUserInfos] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function Welcome() {
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "userInfos");
 
-  useEffect(() => {
-    getData(props.id, "userInfos")
-      .then(res => {
-        setUserInfos(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
-
-  if (isLoading || error) {
+  if (loading || error) {
     return (
       <div className='welcome'>
         <h1>Bonjour !</h1>
@@ -34,10 +21,8 @@ function Welcome(props) {
 
   return (
     <div className="welcome">
-      <h1>Bonjour <span className='userName'>{userInfos.firstName}</span></h1>
+      <h1>Bonjour <span className='userName'>{data.firstName}</span></h1>
       <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
     </div>
   );
 }
-
-export default Welcome;

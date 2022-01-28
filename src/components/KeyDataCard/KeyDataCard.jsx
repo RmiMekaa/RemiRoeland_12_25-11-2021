@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import caloriesIcon from './icons/calories-icon.png';
-import carbsIcon from './icons/carbs-icon.png';
-import lipidIcon from './icons/lipid-icon.png';
-import proteinIcon from './icons/protein-icon.png';
+import caloriesIcon from '../../assets/calories-icon.png';
+import carbsIcon from '../../assets/carbs-icon.png';
+import lipidIcon from '../../assets/lipid-icon.png';
+import proteinIcon from '../../assets/protein-icon.png';
 
 /**
  * React component for Key Data Card
@@ -12,7 +12,7 @@ import proteinIcon from './icons/protein-icon.png';
  * @param {Number} props.count amount
  * @component
  */
-function KeyDataCard(props) {
+export default function KeyDataCard(props) {
   let icon, unity;
   switch (props.type) {
     case 'Calories': icon = caloriesIcon; unity = 'Kcal'; break;
@@ -35,7 +35,5 @@ function KeyDataCard(props) {
 
 KeyDataCard.propTypes = {
   count: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-};
-
-export default KeyDataCard;
+  type: PropTypes.string.isRequired
+}

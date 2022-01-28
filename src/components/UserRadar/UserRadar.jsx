@@ -1,50 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { getData } from '../../data/dataManager';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
+import { useFetch } from '../../hooks/useFetch';
+import { useParams } from 'react-router';
 
 /**
  * React component for user performance radar (Chart: Radar)
- * @param {Object} props 
- * @param {Number} props.id User Id
  * @component
  */
-function UserRadar(props) {
-  const [userPerformance, setUserPerformance] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function UserRadar() {
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "performance");
 
-  useEffect(() => {
-    getData(props.id, "performance")
-      .then(res => {
-        setUserPerformance(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
-
-  if (isLoading || error) {
-    return (
-      <div className='radar'>
-        {displayComponentStatus(isLoading, error, "Performances")}
-      </div>
-    )
-  }
+  if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='radar' />
 
   return (
-    <div className='radar'>
+    <section className='radar'>
+      <h2 className='sr-only'>Performance</h2>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={userPerformance} >
+        <RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={data} >
           <PolarGrid />
           <PolarAngleAxis dy={3} tick={{ fill: 'white', fontSize: 12 }} dataKey='kind' />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
-    </div>
+    </section>
   );
 }
-
-export default UserRadar;
