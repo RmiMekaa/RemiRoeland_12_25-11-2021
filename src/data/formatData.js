@@ -1,4 +1,10 @@
-export function formatData(data, type) {
+/**
+ * Global function to format data, requires data and type to call the corresponding formatting function
+ * @param   {Object | number}  data  Raw data
+ * @param   {String}  type  Type of data
+ * @return  {Object}  formated data
+ */
+export default function formatData(data, type) {
   switch (type) {
     case 'averageSessions': return formatAverageSessions(data);
     case 'activity': return formatActivity(data);
@@ -53,7 +59,6 @@ function formatPerformance(data) {
     }
   }).reverse();
 }
-
 /**
  * Translate performance kind from EN to FR
  * @param  {String}   string   English kind

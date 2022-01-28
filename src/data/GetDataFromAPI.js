@@ -1,26 +1,23 @@
 import axios from 'axios'
 
-const url = "http://localhost:3000/user/";
+//Routes
+const baseURL = "http://localhost:3000/user/";
+const averageSessionsUrl = (id) => { return baseURL + id + '/average-sessions' }
+const performanceUrl = (id) => { return baseURL + id + '/performance' }
+const activityUrl = (id) => { return baseURL + id + '/activity' }
+const mainDataUrl = (id) => { return baseURL + id }
 
 /**
- * Fetch Data from API
- *
- * @param   {Number}  id    user Id
- * @param   {string}  type  url endpoint extension (available so far: performance | average-sessions | activity)
- *
- * @return  {Promise.<Object>}  requested data promise
+ * Fetch data from API
+ * @param   {Number}  id    User id
+ * @param   {string}  type  Type of requested data
+ * @return  {Promise.<Object>}  Requested data promise
  */
-async function getDataFromAPI(id, type) {
+export async function getDataFromAPI(id, type) {
   try {
-    switch (type) {
-      case 'averageSessions': return fetchAverageSessions(id);
-      case 'performance': return fetchPerformance(id);
-      case 'activity': return fetchActivity(id);
-      case 'keyData': return fetchKeyData(id);
-      case 'score': return fetchScore(id);
-      case 'userInfos': return fetchUserInfos(id);
-      default: return;
-    }
+    const requestUrl = setUrl(id, type);
+    const res = await axios(requestUrl);
+    return returnFromResponse(res, type);
   }
   catch (err) {
     console.error(err);
@@ -28,38 +25,39 @@ async function getDataFromAPI(id, type) {
   }
 }
 
-async function fetchAverageSessions(id) {
-  const res = await axios(url + id + '/average-sessions')
-  return await res.data.data.sessions;
+/**
+ * Config request url
+ * @param   {Number}  id    User id
+ * @param   {String}  type  Type of requested data
+ * @return  {String}  Request url
+ */
+function setUrl(id, type) {
+  switch (type) {
+    case 'averageSessions': return averageSessionsUrl(id);
+    case 'performance': return performanceUrl(id);
+    case 'activity': return activityUrl(id);
+    default: return mainDataUrl(id);
+  }
 }
 
-async function fetchPerformance(id) {
-  const res = await axios(url + id + '/performance')
-  return await res.data.data;
+/**
+ * Extract required data from the response body
+ * @param   {Object}  res    Response body
+ * @param   {String}  type   Type of Requested data
+ * @return  {Object}  Requested data
+ */
+function returnFromResponse(res, type) {
+  switch (type) {
+    case 'averageSessions': return res.data.data.sessions;
+    case 'performance': return res.data.data;
+    case 'activity': return res.data.data.sessions;
+    case 'keyData': return res.data.data.keyData;
+    case 'userInfos': return res.data.data.userInfos;
+    case 'score': {
+      //Handle several property names for the user score
+      if (!res.data.data.score) return res.data.data.todayScore;
+      return res.data.data.score;
+    }
+    default: return;
+  }
 }
-
-async function fetchActivity(id) {
-  const res = await axios(url + id + '/activity')
-  return await res.data.data.sessions;
-}
-
-async function fetchKeyData(id) {
-  const res = await axios(url + id)
-  return await res.data.data.keyData;
-}
-async function fetchScore(id) {
-  const res = await axios(url + id)
-  if (!res.data.data.score) return res.data.data.todayScore;
-  return await res.data.data.score;
-}
-
-async function fetchUserInfos(id) {
-  const res = await axios(url + id)
-  return await res.data.data.userInfos;
-}
-
-
-
-
-
-export { getDataFromAPI };
