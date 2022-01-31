@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import Welcome from '../../components/Welcome/Welcome';
 import DailyActivity from '../../components/DailyActivity/DailyActivity';
 import AverageSessions from '../../components/AverageSessions/AverageSessions';
