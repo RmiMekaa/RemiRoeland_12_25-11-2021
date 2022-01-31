@@ -5,7 +5,7 @@ import formatData from "../data/formatData"
 
 //Set to false to use mock data
 const api = true;
-api ? console.log('Fetch from API') : console.log('Mock Data');
+console.log(api ? 'Fetch from API' : 'Mock Data');
 
 /**
  * Hook to get data

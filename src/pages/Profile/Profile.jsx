@@ -8,15 +8,13 @@ import Score from '../../components/Score/Score';
 import KeyData from '../../components/KeyData/KeyData';
 
 export default function Profile() {
-  const { id } = useParams();
-  const userId = parseInt(id);
 
   return (
     <main className='profile'>
       <Welcome />
       <KeyData />
       <DailyActivity />
-      <AverageSessions id={userId} />
+      <AverageSessions />
       <UserRadar />
       <Score />
     </main>

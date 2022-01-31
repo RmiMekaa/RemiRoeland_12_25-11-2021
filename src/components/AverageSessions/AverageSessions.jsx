@@ -2,10 +2,7 @@ import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
 import { useFetch } from '../../hooks/useFetch';
-// import PropTypes from 'prop-types';
-// import { getData } from '../../data/dataManager';
-// import { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router';
 
 /**
  * React Component for User Average Sessions (Chart: LineChart)
@@ -13,24 +10,9 @@ import { useFetch } from '../../hooks/useFetch';
  * @component
  */
 export default function AverageSessions(props) {
-  const { loading, error, data } = useFetch(props.id, "averageSessions");
-
-  //const [userAverageSessions, setUserAverageSessions] = useState(null);
-  //const [isLoading, setLoadingStatus] = useState(true);
-  //const [error, setError] = useState(false);
-
-  // useEffect(() => {
-  //   getData(props.id, "averageSessions")
-  //     .then(res => {
-  //       setUserAverageSessions(res)
-  //       setLoadingStatus(false)
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       setError(true)
-  //       setLoadingStatus(false)
-  //     })
-  // }, [props.id])
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "averageSessions");
 
   if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='averageSessions' />
 
@@ -78,7 +60,3 @@ const CustomCursor = ({ points }) => {
     <rect x={points[0].x} y="0" height="100%" width="100%" fill="rgba(0, 0, 0, 0.1)"></rect>
   )
 }
-
-// AverageSessions.propTypes = {
-//   id: PropTypes.number.isRequired,
-// };

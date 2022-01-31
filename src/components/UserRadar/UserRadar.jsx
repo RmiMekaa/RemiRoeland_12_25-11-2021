@@ -13,10 +13,10 @@ export default function UserRadar() {
   const userId = parseInt(id);
   const { loading, error, data } = useFetch(userId, "performance");
 
-  if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='radar' />
+  if (loading || error) return <TemplateErrorLoading loading={loading} error={error} className='performance' />
 
   return (
-    <section className='radar'>
+    <section className='performance'>
       <h2 className='sr-only'>Performance</h2>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={data} >
