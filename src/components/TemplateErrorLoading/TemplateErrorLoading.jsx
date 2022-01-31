@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import errorIcon from '../../assets/error.png'
 
 /**
  * Template for component loading/error
