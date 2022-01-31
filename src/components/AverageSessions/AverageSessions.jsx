@@ -9,7 +9,7 @@ import { useParams } from 'react-router';
  * @param {Object} props 
  * @component
  */
-export default function AverageSessions(props) {
+export default function AverageSessions() {
   const { id } = useParams();
   const userId = parseInt(id);
   const { loading, error, data } = useFetch(userId, "averageSessions");
