@@ -7,6 +7,7 @@
 @import '../components/Score/Score.scss';
 @import '../components/KeyData/KeyData.scss';
 @import '../components/KeyDataCard/KeyDataCard.scss';
+@import '../components/TemplateErrorLoading/TemplateErrorLoading.scss';
 @import '../pages/Profile/Profile.scss';
 @import '../pages/ComingSoon/ComingSoon.scss';
 @import '../pages/HomePage/HomePage.scss';
@@ -28,18 +29,6 @@ body {
   font-family: 'roboto';
 }
 
-.loadingMsg, .errorMsg {
-  display: flex;
-  padding: 2rem;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background-color: #282D30;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  color: white;
-}
 
 .sr-only {
   position: absolute;
