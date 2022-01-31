@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //Routes
-const baseURL = "http://localhost:3000/usder/";
+const baseURL = "http://localhost:3000/user/";
 const urls = {
   averageSessions: (id) => { return baseURL + id + '/average-sessions' },
   performance: (id) => { return baseURL + id + '/performance' },

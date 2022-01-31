@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { getMockData } from "../data/getMockData"
-import { getDataFromAPI } from "../data/getDataFromAPI"
+import { getDataFromAPI } from "../data/GetDataFromAPI"
 import formatData from "../data/formatData"
 
 //Set to false to use mock data
