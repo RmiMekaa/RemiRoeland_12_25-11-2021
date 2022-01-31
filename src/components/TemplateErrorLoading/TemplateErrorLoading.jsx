@@ -27,8 +27,8 @@ const templateError = (className, error) => {
   return (
     <p className='errorMsg'>
       <h2 className='errorMsg__feature'>{feature(className)}</h2>
-      <span className='errorMsg__error'>Erreur: {error}</span>
-    </p>
+      <span className='errorMsg__error'>Données indisponibles : {error}</span>
+    </p >
   )
 }
 

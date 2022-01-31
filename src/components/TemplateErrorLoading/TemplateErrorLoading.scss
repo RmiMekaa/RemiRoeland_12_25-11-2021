@@ -1,8 +1,9 @@
 .loadingMsg, .errorMsg {
+  min-height: 250px;
+  position: relative;
   margin: 0;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   font-size: 1.1rem;
   align-items: center;
   text-align: center;
@@ -12,29 +13,38 @@
   width: 100%;
   border-radius: 5px;
   color: white;
+  overflow: hidden;
 }
 
 .errorMsg {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-image: url('../../assets/error.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 120px;
+  justify-content: inherit;
   &__feature {
-    font-size: 1.4rem;
-  }
-  &__description {
     font-size: 1.2rem;
+    background-color: black;
+    width: 100%;
+    padding: 0.5rem;
   }
+  // & img {
+  //   height: 120px;
+  //   position: absolute;
+  //   margin: auto; 
+  //   top: 25%;
+  // }
   &__error {
-    display: block;
-    font-size: 1rem;
-    margin-top: 0.2rem;
-  }
-  & img {
-    position: absolute;
-    filter: saturate(0);
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    line-height: 1.5rem;
+    background-image: url('../../assets/error.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 180px;
+
   }
 }
