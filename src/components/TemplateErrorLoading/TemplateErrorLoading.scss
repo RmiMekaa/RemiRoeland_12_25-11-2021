@@ -1,0 +1,40 @@
+.loadingMsg, .errorMsg {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 1.1rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #282D30;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+}
+
+.errorMsg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url('../../assets/error.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 120px;
+  &__feature {
+    font-size: 1.4rem;
+  }
+  &__description {
+    font-size: 1.2rem;
+  }
+  &__error {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+  }
+  & img {
+    position: absolute;
+    filter: saturate(0);
+  }
+}

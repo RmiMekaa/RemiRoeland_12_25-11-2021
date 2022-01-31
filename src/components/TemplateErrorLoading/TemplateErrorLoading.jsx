@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import errorIcon from '../../assets/error.png'
 
 /**
  * Template for component loading/error
@@ -13,7 +14,7 @@ export default function TemplateErrorLoading(props) {
   const { loading, error, className } = props;
   return (
     <div className={className}>
-      {loading ? templateLoading() : templateError(error)}
+      {loading ? templateLoading() : templateError(className, error)}
     </div>
   )
 }
@@ -22,8 +23,26 @@ const templateLoading = () => {
   return <span className='loadingMsg'>Chargement des données...</span>
 }
 
-const templateError = (error) => {
-  return <span className='errorMsg'>Désolé, nous n'avons pas réussi à charger vos données. <br /> (Erreur: {error})</span>
+const templateError = (className, error) => {
+  return (
+    <p className='errorMsg'>
+      <h2 className='errorMsg__feature'>{feature(className)}</h2>
+      <span className='errorMsg__error'>Erreur: {error}</span>
+    </p>
+  )
+}
+
+const feature = (className) => {
+  let feature;
+  switch (className) {
+    case 'dailyActivity': feature = "Activité quotidienne"; break;
+    case 'averageSessions': feature = "Durée moyenne des sessions"; break;
+    case 'performance': feature = "Performance"; break;
+    case 'score': feature = "Score"; break;
+    case 'keyData': feature = "Chiffres clés"; break;
+    default: return;
+  }
+  return feature;
 }
 
 TemplateErrorLoading.propTypes = {
