@@ -66,10 +66,10 @@ function formatPerformance(data) {
  */
 function translateKind(string) {
   switch (string) {
-    case 'energy': return "energie";
+    case 'energy': return "Energie";
     case 'strength': return "Force";
     case 'speed': return "Vitesse";
     case 'intensity': return "Intensité";
-    default: return string;
+    default: return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
