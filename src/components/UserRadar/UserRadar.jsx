@@ -1,5 +1,5 @@
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
 import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router';
@@ -22,9 +22,28 @@ export default function UserRadar() {
         <RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={data} >
           <PolarGrid />
           <PolarAngleAxis dy={3} tick={{ fill: 'white', fontSize: 12 }} dataKey='kind' />
+          <Tooltip content={<CustomToolTipContent />} />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
     </section>
   );
+}
+
+/**
+ * Custom tooltip content for radar chart
+ * @param {Object}    payload   data
+ * @param {Boolean}   active    true if tooltip is displayed
+ * @component
+ */
+const CustomToolTipContent = ({ payload, active }) => {
+  if (active && payload && payload.length) {
+    return (
+      <p className="tooltip" style={{ padding: "10px 10px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <span style={{ color: "black", margin: "0" }} className="tooltip__text">{payload[0].payload.kind}</span>
+        <span style={{ color: "black", margin: "0" }} className="tooltip__text">Score: {payload[0].payload.value}</span>
+      </p>
+    )
+  }
+  return null
 }
