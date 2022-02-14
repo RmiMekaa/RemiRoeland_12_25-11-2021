@@ -9,11 +9,12 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto 320px 263px;
   gap: 1.875rem;
+  background-color: white;
 }
 
 @media all and (max-width: 1439px) {
   .profile {
-    padding: 2rem;
+    padding: 3rem;
     grid-template-areas: 
     "titre titre titre"
     "e e e"

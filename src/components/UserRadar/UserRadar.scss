@@ -1,7 +1,18 @@
 .performance {
   position: relative;
   grid-area: c;
+  color: white;
+}
+
+.radarContainer {
   background-color: #282D30;
   border-radius: 5px;
-  color: white;
+}
+
+.perfTooltip {
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
 }
