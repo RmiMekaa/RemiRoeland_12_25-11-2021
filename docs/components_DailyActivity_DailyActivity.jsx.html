@@ -26,50 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react';
-import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
-import PropTypes from 'prop-types';
-import { getUserDailyActivity } from '../../data/GetUserDailyActivity';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+            <pre class="prettyprint source linenums"><code>import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from 'recharts';
+import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
+import { useFetch } from '../../hooks/useFetch';
+import { useParams } from 'react-router';
+import React from 'react';
 
 /**
  * React Component for User Daily Activity (Chart: BarChart)
- * @param {Object} props
- * @param {Number} props.id
  * @component
  */
-function DailyActivity(props) {
-  const [userActivity, setUserActivity] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function DailyActivity() {
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "activity");
 
-  useEffect(() => {
-    getUserDailyActivity(props.id)
-      .then(res => {
-        setUserActivity(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
-
-  if (isLoading || error) {
-    return (
-      &lt;div className='dailyActivity'>
-        {displayComponentStatus(isLoading, error, "Activité quotidienne")}
-      &lt;/div>
-    )
-  }
+  if (loading || error) return &lt;TemplateErrorLoading loading={loading} error={error} className='dailyActivity' />
 
   return (
-    &lt;div className='dailyActivity'>
+    &lt;section className='dailyActivity'>
+      &lt;h2 className='sr-only'>Activité quotidienne&lt;/h2>
       &lt;TopSection />
       &lt;ResponsiveContainer width='100%' height='70%'>
-        &lt;BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={userActivity} >
+        &lt;BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={data} >
           &lt;CartesianGrid strokeDasharray="2 3" vertical={false} />
-          &lt;Tooltip itemStyle={{ color: 'white' }} contentStyle={{ border: 'none', color: 'white', background: '#E60000' }} content={&lt; CustomToolTipContent />} />
+          &lt;Tooltip content={&lt; CustomToolTipContent />} />
           &lt;XAxis tickSize={0} dataKey={"index"} tickMargin={16} />
           &lt;YAxis dataKey="kilogram" yAxisId="kilogram" tickSize={0} orientation="right" domain={['dataMin - 1', 'auto']} type="number" tickCount={3} interval={0} axisLine={false} allowDecimals={false} />
           &lt;YAxis dataKey="calories" yAxisId="calories" domain={[0, 'dataMax + 50']} hide={true} />
@@ -77,7 +58,7 @@ function DailyActivity(props) {
           &lt;Bar dataKey="calories" yAxisId="calories" barSize={7} radius={[10, 10, 0, 0]} fill="#E60000" />
         &lt;/BarChart>
       &lt;/ResponsiveContainer>
-    &lt;/div>
+    &lt;/section>
   );
 }
 
@@ -96,6 +77,7 @@ const TopSection = () => {
     &lt;/div>
   )
 }
+
 /**
  * Custom tooltip content for bar chart
  * @param {object}    payload   data
@@ -112,14 +94,7 @@ const CustomToolTipContent = ({ payload, active }) => {
     )
   }
   return null
-}
-
-DailyActivity.propTypes = {
-  id: PropTypes.number.isRequired
-};
-
-
-export default DailyActivity;</code></pre>
+}</code></pre>
         </article>
     </section>
 
@@ -129,13 +104,13 @@ export default DailyActivity;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomText">CustomText</a></li><li><a href="global.html#CustomToolTipContent">CustomToolTipContent</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#getDataFromAPI">getDataFromAPI</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserDailyActivity">getUserDailyActivity</a></li><li><a href="global.html#getUserInfos">getUserInfos</a></li><li><a href="global.html#getUserKeyData">getUserKeyData</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#getUserScore">getUserScore</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#KeyData">KeyData</a></li><li><a href="global.html#KeyDataCard">KeyDataCard</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideMenu">SideMenu</a></li><li><a href="global.html#TopSection">TopSection</a></li><li><a href="global.html#translateKind">translateKind</a></li><li><a href="global.html#UserRadar">UserRadar</a></li><li><a href="global.html#Welcome">Welcome</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomText">CustomText</a></li><li><a href="global.html#CustomToolTipContent">CustomToolTipContent</a></li><li><a href="global.html#dataFromResponse">dataFromResponse</a></li><li><a href="global.html#formatActivity">formatActivity</a></li><li><a href="global.html#formatAverageSessions">formatAverageSessions</a></li><li><a href="global.html#formatPerformance">formatPerformance</a></li><li><a href="global.html#formatScore">formatScore</a></li><li><a href="global.html#getDataFromAPI">getDataFromAPI</a></li><li><a href="global.html#getMockData">getMockData</a></li><li><a href="global.html#TopSection">TopSection</a></li><li><a href="global.html#translateKind">translateKind</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 17 2021 17:45:44 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Feb 14 2022 17:29:41 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

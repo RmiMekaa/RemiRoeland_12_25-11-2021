@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/KeyData/KeyData.jsx</title>
+    <title>JSDoc: Source: data/getMockData.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/KeyData/KeyData.jsx</h1>
+    <h1 class="page-title">Source: data/getMockData.js</h1>
 
     
 
@@ -26,32 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import KeyDataCard from '../KeyDataCard/KeyDataCard';
-import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
-import { useFetch } from '../../hooks/useFetch';
-import { useParams } from 'react-router';
+            <pre class="prettyprint source linenums"><code>import { USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_ACTIVITY, USER_PERFORMANCE } from "../mock/data";
+
+const userMainData = (id) => { return USER_MAIN_DATA.find(obj => { return obj.id === id }) }
+const userActivity = (id) => { return USER_ACTIVITY.find(obj => { return obj.userId === id }) }
+const userAverageSessions = (id) => { return USER_AVERAGE_SESSIONS.find(obj => { return obj.userId === id }) }
+const userPerformance = (id) => { return USER_PERFORMANCE.find(obj => { return obj.userId === id }) }
 
 /**
- * React component for Key Data Section
- * @component
+ * Get Mock Data
+ * @param   {number}  id    User id
+ * @param   {String}  type  Requested data
+ * @return  {Object}
  */
-export default function KeyData() {
-  const { id } = useParams();
-  const userId = parseInt(id);
-  const { loading, error, data } = useFetch(userId, "keyData");
-
-  if (loading || error) return &lt;TemplateErrorLoading loading={loading} error={error} className='keyData' />
-
-  return (
-    &lt;section className='keyData'>
-      &lt;h2 className='sr-only'>keyData&lt;/h2>
-      &lt;KeyDataCard type="Calories" count={data.calorieCount} />
-      &lt;KeyDataCard type="Proteines" count={data.proteinCount} />
-      &lt;KeyDataCard type="Glucides" count={data.carbohydrateCount} />
-      &lt;KeyDataCard type="Lipides" count={data.lipidCount} />
-    &lt;/section>
-  )
+export function getMockData(id, type) {
+  switch (type) {
+    case "averageSessions": return userAverageSessions(id).sessions;
+    case "activity": return userActivity(id).sessions;
+    case "userInfos": return userMainData(id).userInfos;
+    case "keyData": return userMainData(id).keyData;
+    case "score": return userMainData(id).score;
+    case "performance": return userPerformance(id);
+    default: return;
+  }
 }</code></pre>
         </article>
     </section>

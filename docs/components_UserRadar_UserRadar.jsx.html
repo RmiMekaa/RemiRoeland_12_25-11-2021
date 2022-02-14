@@ -26,56 +26,55 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState } from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { getUserPerformance } from '../../data/GetUserPerformance';
-import { displayComponentStatus } from "../../services/DisplayComponentStatus";
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
+import { useFetch } from '../../hooks/useFetch';
+import { useParams } from 'react-router';
 
 /**
  * React component for user performance radar (Chart: Radar)
- * @param {Object} props 
- * @param {Number} props.id User Id
  * @component
  */
-function UserRadar(props) {
-  const [userPerformance, setUserPerformance] = useState(null);
-  const [isLoading, setLoadingStatus] = useState(true);
-  const [error, setError] = useState(false);
+export default function UserRadar() {
+  const { id } = useParams();
+  const userId = parseInt(id);
+  const { loading, error, data } = useFetch(userId, "performance");
 
-  useEffect(() => {
-    getUserPerformance(props.id)
-      .then(res => {
-        setUserPerformance(res)
-        setLoadingStatus(false)
-      })
-      .catch(err => {
-        setError(true)
-        setLoadingStatus(false)
-      })
-  }, [props.id])
-
-  if (isLoading || error) {
-    return (
-      &lt;div className='radar'>
-        {displayComponentStatus(isLoading, error, "Performances")}
-      &lt;/div>
-    )
-  }
+  if (loading || error) return &lt;TemplateErrorLoading loading={loading} error={error} className='performance' />
 
   return (
-    &lt;div className='radar'>
-      &lt;ResponsiveContainer width="100%" height="100%">
-        &lt;RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={userPerformance} >
+    &lt;section className='performance'>
+      &lt;h2 className='sr-only'>Performance&lt;/h2>
+      &lt;ResponsiveContainer className="radarContainer">
+        &lt;RadarChart cx="50%" cy="50%" outerRadius="70%" data={data} >
           &lt;PolarGrid />
           &lt;PolarAngleAxis dy={3} tick={{ fill: 'white', fontSize: 12 }} dataKey='kind' />
+          &lt;Tooltip content={&lt;CustomToolTipContent />} />
           &lt;Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         &lt;/RadarChart>
       &lt;/ResponsiveContainer>
-    &lt;/div>
+    &lt;/section>
   );
 }
 
-export default UserRadar;</code></pre>
+/**
+ * Custom tooltip content for radar chart
+ * @param {Object}    payload   data
+ * @param {Boolean}   active    true if tooltip is displayed
+ * @component
+ */
+const CustomToolTipContent = ({ payload, active }) => {
+  if (active &amp;&amp; payload &amp;&amp; payload.length) {
+    return (
+      &lt;p className="perfTooltip">
+        &lt;span style={{ color: "black", margin: "0" }} className="tooltip__text">{payload[0].payload.kind}&lt;/span>
+        &lt;span style={{ color: "black", margin: "0" }} className="tooltip__text">Score: {payload[0].payload.value}&lt;/span>
+      &lt;/p>
+    )
+  }
+  return null
+}</code></pre>
         </article>
     </section>
 
@@ -85,13 +84,13 @@ export default UserRadar;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomText">CustomText</a></li><li><a href="global.html#CustomToolTipContent">CustomToolTipContent</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#getDataFromAPI">getDataFromAPI</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserDailyActivity">getUserDailyActivity</a></li><li><a href="global.html#getUserInfos">getUserInfos</a></li><li><a href="global.html#getUserKeyData">getUserKeyData</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#getUserScore">getUserScore</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#KeyData">KeyData</a></li><li><a href="global.html#KeyDataCard">KeyDataCard</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideMenu">SideMenu</a></li><li><a href="global.html#TopSection">TopSection</a></li><li><a href="global.html#translateKind">translateKind</a></li><li><a href="global.html#UserRadar">UserRadar</a></li><li><a href="global.html#Welcome">Welcome</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomText">CustomText</a></li><li><a href="global.html#CustomToolTipContent">CustomToolTipContent</a></li><li><a href="global.html#dataFromResponse">dataFromResponse</a></li><li><a href="global.html#formatActivity">formatActivity</a></li><li><a href="global.html#formatAverageSessions">formatAverageSessions</a></li><li><a href="global.html#formatPerformance">formatPerformance</a></li><li><a href="global.html#formatScore">formatScore</a></li><li><a href="global.html#getDataFromAPI">getDataFromAPI</a></li><li><a href="global.html#getMockData">getMockData</a></li><li><a href="global.html#TopSection">TopSection</a></li><li><a href="global.html#translateKind">translateKind</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 17 2021 17:45:44 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Feb 14 2022 17:29:41 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/KeyData/KeyData.jsx</title>
+    <title>JSDoc: Source: hooks/useFetch.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/KeyData/KeyData.jsx</h1>
+    <h1 class="page-title">Source: hooks/useFetch.jsx</h1>
 
     
 
@@ -26,32 +26,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import KeyDataCard from '../KeyDataCard/KeyDataCard';
-import TemplateErrorLoading from "../TemplateErrorLoading/TemplateErrorLoading";
-import { useFetch } from '../../hooks/useFetch';
-import { useParams } from 'react-router';
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react"
+import { getMockData } from "../data/getMockData"
+import { getDataFromAPI } from "../data/GetDataFromAPI"
+import formatData from "../data/formatData"
+
+//Set to false to use mock data
+const api = true;
+console.log(api ? 'Fetch from API' : 'Mock Data');
 
 /**
- * React component for Key Data Section
- * @component
+ * Hook to get data
+ * @param {Number} userId 
+ * @param {String} type type of requested data. Available so far: "averageSessions" | "performance" | "activity" | "keyData" | "userInfos" | "score"
+ * @return {Object} 
  */
-export default function KeyData() {
-  const { id } = useParams();
-  const userId = parseInt(id);
-  const { loading, error, data } = useFetch(userId, "keyData");
+export const useFetch = (userId, type) => {
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  if (loading || error) return &lt;TemplateErrorLoading loading={loading} error={error} className='keyData' />
+  useEffect(() => {
+    if (!api) {
+      let mockData = getMockData(userId, type);
+      let formatedData = formatData(mockData, type)
+      setData(formatedData)
+      setLoading(false);
+    }
+    getDataFromAPI(userId, type)
+      .then((res) => {
+        setData(formatData(res, type));
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message ? err.message : 'Error');
+        setLoading(false);
+      })
+  }, [userId, type])
 
-  return (
-    &lt;section className='keyData'>
-      &lt;h2 className='sr-only'>keyData&lt;/h2>
-      &lt;KeyDataCard type="Calories" count={data.calorieCount} />
-      &lt;KeyDataCard type="Proteines" count={data.proteinCount} />
-      &lt;KeyDataCard type="Glucides" count={data.carbohydrateCount} />
-      &lt;KeyDataCard type="Lipides" count={data.lipidCount} />
-    &lt;/section>
-  )
+  return { loading, error, data }
 }</code></pre>
         </article>
     </section>
