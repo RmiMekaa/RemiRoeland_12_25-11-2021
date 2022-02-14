@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Header/Header.jsx</title>
+    <title>JSDoc: Source: pages/ComingSoon/ComingSoon.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Header/Header.jsx</h1>
+    <h1 class="page-title">Source: pages/ComingSoon/ComingSoon.jsx</h1>
 
     
 
@@ -26,26 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+            <pre class="prettyprint source linenums"><code>import React from "react"
 
 /**
- * React Component for the header
+ * React component for undeveloped pages, display a coming soon message
  * @component
  */
-export default function Header() {
+export default function ComingSoon() {
   return (
-    &lt;header className="header">
-      &lt;nav>
-        &lt;Link to="/" className="header__link">&lt;img className='header__logo' src={logo} alt='logo' />&lt;/Link>
-        &lt;Link to="/" className="header__link">Accueil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Profil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Réglages&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Communauté&lt;/Link>
-      &lt;/nav>
-    &lt;/header>
-  );
+    &lt;div className="ComingSoon">
+      &lt;h2>Coming Soon...&lt;/h2>
+      &lt;span>Désolé, ce contenu n'a pas encore été développé !&lt;/span>
+    &lt;/div>
+  )
 }</code></pre>
         </article>
     </section>

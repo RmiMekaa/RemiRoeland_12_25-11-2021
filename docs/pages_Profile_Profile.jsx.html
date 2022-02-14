@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Header/Header.jsx</title>
+    <title>JSDoc: Source: pages/Profile/Profile.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Header/Header.jsx</h1>
+    <h1 class="page-title">Source: pages/Profile/Profile.jsx</h1>
 
     
 
@@ -27,24 +27,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+import Welcome from '../../components/Welcome/Welcome';
+import DailyActivity from '../../components/DailyActivity/DailyActivity';
+import AverageSessions from '../../components/AverageSessions/AverageSessions';
+import UserRadar from '../../components/UserRadar/UserRadar';
+import Score from '../../components/Score/Score';
+import KeyData from '../../components/KeyData/KeyData';
 
 /**
- * React Component for the header
+ * React component for the profile page
  * @component
  */
-export default function Header() {
+export default function Profile() {
   return (
-    &lt;header className="header">
-      &lt;nav>
-        &lt;Link to="/" className="header__link">&lt;img className='header__logo' src={logo} alt='logo' />&lt;/Link>
-        &lt;Link to="/" className="header__link">Accueil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Profil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Réglages&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Communauté&lt;/Link>
-      &lt;/nav>
-    &lt;/header>
+    &lt;main className='profile'>
+      &lt;Welcome />
+      &lt;KeyData />
+      &lt;DailyActivity />
+      &lt;AverageSessions />
+      &lt;UserRadar />
+      &lt;Score />
+    &lt;/main>
   );
 }</code></pre>
         </article>

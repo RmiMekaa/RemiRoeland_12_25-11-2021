@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Header/Header.jsx</title>
+    <title>JSDoc: Source: pages/HomePage/HomePage.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Header/Header.jsx</h1>
+    <h1 class="page-title">Source: pages/HomePage/HomePage.jsx</h1>
 
     
 
@@ -26,26 +26,23 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { NavLink } from "react-router-dom";
 
 /**
- * React Component for the header
+ * React component for the home page
  * @component
  */
-export default function Header() {
+export default function HomePage() {
   return (
-    &lt;header className="header">
+    &lt;main className='homePage'>
+      &lt;span>Selectionnez un utilisateur&lt;/span>
       &lt;nav>
-        &lt;Link to="/" className="header__link">&lt;img className='header__logo' src={logo} alt='logo' />&lt;/Link>
-        &lt;Link to="/" className="header__link">Accueil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Profil&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Réglages&lt;/Link>
-        &lt;Link to="/coming-soon" className="header__link">Communauté&lt;/Link>
+        &lt;NavLink to="/user/12" className="user_shortcut">Karl&lt;/NavLink>
+        &lt;NavLink to="/user/18" className="user_shortcut">Cecilia&lt;/NavLink>
       &lt;/nav>
-    &lt;/header>
-  );
+    &lt;/main>
+  )
 }</code></pre>
         </article>
     </section>
