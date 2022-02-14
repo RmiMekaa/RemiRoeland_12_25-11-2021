@@ -1,5 +1,5 @@
 /**
- * Global function to format data, requires data and type to call the corresponding formatting function
+ * Global function to format data, requires data and type to call the corresponding function
  * @param   {Object | number}  data  Raw data
  * @param   {String}  type  Type of data
  * @return  {Object}  formated data
@@ -15,7 +15,7 @@ export default function formatData(data, type) {
 }
 
 /**
- * Format score to match recharts requierements
+ * Format score to match recharts requirements
  * @param   {number}  data  Score data
  * @return  {Object}  Formated data
  */
@@ -24,7 +24,7 @@ function formatScore(data) {
   return formatedData;
 }
 /**
- * Format average sessions to match recharts requierements
+ * Format average sessions to match recharts requirements
  * @param   {Object}  data  average sessions data
  * @return  {Object}  Formated data
  */
@@ -34,7 +34,7 @@ function formatAverageSessions(data) {
   return data;
 }
 /**
- * Format activity to match recharts requierements
+ * Format activity to match recharts requirements
  * @param   {Object}  data  activity data
  * @return  {Object}  Formated data
  */
@@ -47,7 +47,7 @@ function formatActivity(data) {
   return data;
 }
 /**
- * Format performance to match recharts requierements
+ * Format performance to match recharts requirements
  * @param   {Object}  data  Performance data
  * @return  {Object}  Formated data
  */

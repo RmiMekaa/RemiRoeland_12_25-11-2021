@@ -7,7 +7,7 @@ const userPerformance = (id) => { return USER_PERFORMANCE.find(obj => { return o
 
 /**
  * Get Mock Data
- * @param   {number}  id    User id
+ * @param   {number}  id    User's id
  * @param   {String}  type  Requested data
  * @return  {Object}
  */

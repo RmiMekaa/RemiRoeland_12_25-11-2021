@@ -29,7 +29,7 @@ export async function getDataFromAPI(id, type) {
 }
 
 /**
- * Extract required data from the response body
+ * Extract data from the response body
  * @param   {Object}  res    Response body
  * @param   {String}  type   Type of Requested data
  * @return  {Object}  Requested data
