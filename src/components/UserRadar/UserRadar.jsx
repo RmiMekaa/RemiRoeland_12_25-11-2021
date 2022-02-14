@@ -18,8 +18,8 @@ export default function UserRadar() {
   return (
     <section className='performance'>
       <h2 className='sr-only'>Performance</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart margin={{ top: 10, right: 10, bottom: 10, left: 10 }} cx="50%" cy="50%" outerRadius="70%" data={data} >
+      <ResponsiveContainer className="radarContainer">
+        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data} >
           <PolarGrid />
           <PolarAngleAxis dy={3} tick={{ fill: 'white', fontSize: 12 }} dataKey='kind' />
           <Tooltip content={<CustomToolTipContent />} />
@@ -39,7 +39,7 @@ export default function UserRadar() {
 const CustomToolTipContent = ({ payload, active }) => {
   if (active && payload && payload.length) {
     return (
-      <p className="tooltip" style={{ padding: "10px 10px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <p className="perfTooltip">
         <span style={{ color: "black", margin: "0" }} className="tooltip__text">{payload[0].payload.kind}</span>
         <span style={{ color: "black", margin: "0" }} className="tooltip__text">Score: {payload[0].payload.value}</span>
       </p>

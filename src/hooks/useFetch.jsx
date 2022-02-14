@@ -19,16 +19,20 @@ export const useFetch = (userId, type) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!api) setData(formatData(getMockData(userId, type), type))
+    if (!api) {
+      let mockData = getMockData(userId, type);
+      let formatedData = formatData(mockData, type)
+      setData(formatedData)
+      setLoading(false);
+    }
     getDataFromAPI(userId, type)
       .then((res) => {
-        const formatedData = formatData(res, type);
-        setData(formatedData)
-        setLoading(false)
+        setData(formatData(res, type));
+        setLoading(false);
       })
       .catch((err) => {
-        setError(err.message ? err.message : 'Error')
-        setLoading(false)
+        setError(err.message ? err.message : 'Error');
+        setLoading(false);
       })
   }, [userId, type])
 
