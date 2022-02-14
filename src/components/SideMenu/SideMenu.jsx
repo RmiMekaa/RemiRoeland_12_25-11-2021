@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * React component for side menu
+ * React component for the side menu
  * @component
  */
 export default function SideMenu() {

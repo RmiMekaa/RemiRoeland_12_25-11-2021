@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import React from 'react';
 
 /**
- * React Component for User Daily Activity (Chart: BarChart)
+ * React Component for user's daily activity (Chart: BarChart)
  * @component
  */
 export default function DailyActivity() {
@@ -22,7 +22,7 @@ export default function DailyActivity() {
       <ResponsiveContainer width='100%' height='70%'>
         <BarChart barGap={7} margin={{ bottom: 30, top: 20, left: 20, right: 0 }} data={data} >
           <CartesianGrid strokeDasharray="2 3" vertical={false} />
-          <Tooltip content={< CustomToolTipContent />} />
+          <Tooltip content={< CustomActivityToolTip />} />
           <XAxis tickSize={0} dataKey={"index"} tickMargin={16} />
           <YAxis dataKey="kilogram" yAxisId="kilogram" tickSize={0} orientation="right" domain={['dataMin - 1', 'auto']} type="number" tickCount={3} interval={0} axisLine={false} allowDecimals={false} />
           <YAxis dataKey="calories" yAxisId="calories" domain={[0, 'dataMax + 50']} hide={true} />
@@ -51,12 +51,12 @@ const TopSection = () => {
 }
 
 /**
- * Custom tooltip content for bar chart
- * @param {object}    payload   data
- * @param {boolean}   active    true if tooltip is displayed
+ * Custom tooltip for bar chart
+ * @param {object}    payload   Data
+ * @param {boolean}   active    True if tooltip is displayed
  * @comopnent
  */
-const CustomToolTipContent = ({ payload, active }) => {
+const CustomActivityToolTip = ({ payload, active }) => {
   if (active) {
     return (
       <div className="barChartTooltip">

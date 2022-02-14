@@ -5,8 +5,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router';
 
 /**
- * React Component for User Average Sessions (Chart: LineChart)
- * @param {Object} props 
+ * React Component for user's average sessions (Chart: LineChart)
  * @component
  */
 export default function AverageSessions() {
@@ -22,8 +21,8 @@ export default function AverageSessions() {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 70, bottom: 10, left: 20, right: 20 }}>
           <Tooltip
-            content={<CustomToolTipContent />}
-            cursor={<CustomCursor />}
+            content={<CustomSessionsToolTip />}
+            cursor={<CustomSessionsCursor />}
             contentStyle={{ border: 'none', background: 'white', }}
           />
           <XAxis dataKey="day" axisLine={false} tickLine={false} stroke="white" tickMargin={10} tick={{ fontSize: 12, opacity: 0.7 }} />
@@ -35,12 +34,12 @@ export default function AverageSessions() {
 }
 
 /**
- * Custom tooltip content for line chart
- * @param {Object}    payload   data
- * @param {Boolean}   active    true if tooltip is displayed
+ * Custom tooltip for line chart
+ * @param {Object}    payload   Data
+ * @param {Boolean}   active    True if tooltip is displayed
  * @component
  */
-const CustomToolTipContent = ({ payload, active }) => {
+const CustomSessionsToolTip = ({ payload, active }) => {
   if (active) {
     return (
       <div className="tooltip">
@@ -50,12 +49,13 @@ const CustomToolTipContent = ({ payload, active }) => {
   }
   return null
 }
+
 /**
- * Custom cursor for line chart
- * @param   {Object}  points  coordinates 
+ * Custom cursor for the line chart
+ * @param   {Object}  points  The coordinates of the cursor
  * @component
  */
-const CustomCursor = ({ points }) => {
+const CustomSessionsCursor = ({ points }) => {
   return (
     <rect x={points[0].x} y="0" height="100%" width="100%" fill="rgba(0, 0, 0, 0.1)"></rect>
   )

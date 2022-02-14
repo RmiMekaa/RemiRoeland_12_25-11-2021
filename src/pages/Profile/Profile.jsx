@@ -6,8 +6,11 @@ import UserRadar from '../../components/UserRadar/UserRadar';
 import Score from '../../components/Score/Score';
 import KeyData from '../../components/KeyData/KeyData';
 
+/**
+ * React component for the profile page
+ * @component
+ */
 export default function Profile() {
-
   return (
     <main className='profile'>
       <Welcome />

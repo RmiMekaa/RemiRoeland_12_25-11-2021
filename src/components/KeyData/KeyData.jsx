@@ -5,7 +5,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router';
 
 /**
- * React component for Key Data Section
+ * React component for key data section
  * @component
  */
 export default function KeyData() {

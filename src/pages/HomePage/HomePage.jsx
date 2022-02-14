@@ -1,6 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+/**
+ * React component for the home page
+ * @component
+ */
 export default function HomePage() {
   return (
     <main className='homePage'>

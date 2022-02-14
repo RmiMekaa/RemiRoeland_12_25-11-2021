@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import React from 'react';
 
 /**
- * React Component for user score (Chart: RadialBarChart)
+ * React Component for user's score (Chart: RadialBarChart)
  * @component
  */
 export default function Score() {
@@ -22,17 +22,17 @@ export default function Score() {
         <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
         <RadialBar dataKey="value" cornerRadius={50} background={false} fill="#E60000" />
       </RadialBarChart>
-      <CustomText score={data[0].value} />
+      <ScoreText score={data[0].value} />
     </section>
   );
 }
 
 /**
- * Custom component to display user score
- * @param {Object} score User score
+ * Custom component to display user's score
+ * @param {Object} score User's score
  * @component
  */
-const CustomText = (score) => {
+const ScoreText = (score) => {
   return (
     <div className="score__text">
       <span className="score__text__value">{score.score}%</span>

@@ -5,7 +5,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router';
 
 /**
- * React component for user performance radar (Chart: Radar)
+ * React component for user's performance (Chart: Radar)
  * @component
  */
 export default function UserRadar() {
@@ -22,7 +22,7 @@ export default function UserRadar() {
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data} >
           <PolarGrid />
           <PolarAngleAxis dy={3} tick={{ fill: 'white', fontSize: 12 }} dataKey='kind' />
-          <Tooltip content={<CustomToolTipContent />} />
+          <Tooltip content={<CustomRadarToolTip />} />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
         </RadarChart>
       </ResponsiveContainer>
@@ -31,12 +31,12 @@ export default function UserRadar() {
 }
 
 /**
- * Custom tooltip content for radar chart
- * @param {Object}    payload   data
- * @param {Boolean}   active    true if tooltip is displayed
+ * Custom tooltip for radar chart
+ * @param {Object}    payload   Data
+ * @param {Boolean}   active    True if tooltip is displayed
  * @component
  */
-const CustomToolTipContent = ({ payload, active }) => {
+const CustomRadarToolTip = ({ payload, active }) => {
   if (active && payload && payload.length) {
     return (
       <p className="perfTooltip">

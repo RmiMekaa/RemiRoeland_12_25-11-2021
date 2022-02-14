@@ -6,10 +6,10 @@ import lipidIcon from '../../assets/lipid-icon.png';
 import proteinIcon from '../../assets/protein-icon.png';
 
 /**
- * React component for Key Data Card
+ * React component for key data cards
  * @param {Object} props 
- * @param {String} props.type key data type
- * @param {Number} props.count amount
+ * @param {String} props.type Key data type ( "Calories" | "Proteines" | "Glucides" | "Lipides" )
+ * @param {Number} props.count Amount
  * @component
  */
 export default function KeyDataCard(props) {
