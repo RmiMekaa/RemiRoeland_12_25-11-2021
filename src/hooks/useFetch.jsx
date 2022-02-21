@@ -24,6 +24,7 @@ export function useFetch(userId, type) {
       let formatedData = formatData(mockData, type)
       setData(formatedData)
       setLoading(false);
+      return;
     }
     getDataFromAPI(userId, type)
       .then((res) => {
