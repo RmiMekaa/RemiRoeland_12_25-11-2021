@@ -40,8 +40,8 @@ const CustomRadarToolTip = ({ payload, active }) => {
   if (active && payload && payload.length) {
     return (
       <p className="perfTooltip">
-        <span style={{ color: "black", margin: "0" }} className="tooltip__text">{payload[0].payload.kind}</span>
-        <span style={{ color: "black", margin: "0" }} className="tooltip__text">Score: {payload[0].payload.value}</span>
+        <span style={{ color: "black", margin: "0" }} className="tooltip__text">{payload[0].payload.kind}:</span>
+        <span style={{ color: "black", margin: "0" }} className="tooltip__text"><span style={{ color: '#FF0101' }}>{payload[0].payload.value}</span>/200</span>
       </p>
     )
   }
