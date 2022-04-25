@@ -1,4 +1,4 @@
-# OpenClassrooms - Project 13
+# OpenClassrooms - Project 12
 **Project Name: SportSee**  
 **Project Title: "Develop a sport analytics dashboard with React"**  
 
