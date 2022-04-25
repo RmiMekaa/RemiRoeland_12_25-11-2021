@@ -20,8 +20,7 @@ export default function formatData(data, type) {
  * @return  {Object}  Formated data
  */
 function formatScore(data) {
-  let formatedData = [{ value: data * 100 }];
-  return formatedData;
+  return [{ value: data * 100 }];
 }
 /**
  * Format average sessions to match recharts requirements
@@ -41,8 +40,8 @@ function formatAverageSessions(data) {
 function formatActivity(data) {
   let i = 0;
   data.map(session => {
-    i++;
-    return session.index = i;
+    session.index = i++;
+    return session.index;
   })
   return data;
 }
