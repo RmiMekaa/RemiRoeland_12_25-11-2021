@@ -2,6 +2,15 @@
 **Project Name: SportSee**  
 **Project Title: "Develop a sport analytics dashboard with React"**  
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)  
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=bugs)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
+
 ## Objectives
  - Develop a sport analytics dashboard according to this [figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
  - Handle API calls
