@@ -30,16 +30,14 @@ const templateError = (className, error) => {
   )
 }
 const feature = (className) => {
-  let feature;
   switch (className) {
-    case 'dailyActivity': feature = "Activité quotidienne"; break;
-    case 'averageSessions': feature = "Durée moyenne des sessions"; break;
-    case 'performance': feature = "Performance"; break;
-    case 'score': feature = "Score"; break;
-    case 'keyData': feature = "Chiffres clés"; break;
+    case 'dailyActivity': return "Activité quotidienne";
+    case 'averageSessions': return "Durée moyenne des sessions";
+    case 'performance': return "Performance";
+    case 'score': return "Score";
+    case 'keyData': return "Chiffres clés";
     default: return;
   }
-  return feature;
 }
 
 TemplateErrorLoading.propTypes = {
