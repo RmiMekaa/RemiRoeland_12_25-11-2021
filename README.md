@@ -44,8 +44,7 @@ Indicate amount of Calories, proteins, carbohydrate and lipids recommended for t
 1. First of all, go to [this repository](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the instructions.  
 It will allows you to run the micro API for the sports analytics dashboard.  
 
-Once you have installed the backend :
-
+Then,
 2. Clone this repository on your computer.
 3. Install the dependencies with the `yarn install` command.
 4. Launch the app with the `yarn start`.
