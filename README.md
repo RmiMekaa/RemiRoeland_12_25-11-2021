@@ -1,6 +1,7 @@
 # OpenClassrooms - Project 12
 **Project Name: SportSee**  
 **Project Title: "Develop a sport analytics dashboard with React"**  
+**Test it ! : As this project use an external micro API, you need to [install](#installation) it to be able to test it**
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_12_25-11-2021&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_12_25-11-2021)
